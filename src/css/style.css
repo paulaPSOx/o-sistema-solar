@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    background-color: #000;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+main::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    width: 80vw;
+    background: linear-gradient(-233deg, #000 40%, rgba(0, 0, 0, 0) 65%) no-repeat;
+    transition: width 0.3s ease;
+}
+
+main .planeta {
+    display: none;
+    height: 100vh;
+    transition: display 0.3s ease;
+}
+
+main .planeta.selecionado {
+    display: block;
+    transition: display 0.3s ease;
+}
+
+main .planeta .imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: height 0.3s ease;
+}
+
+.conteudo {
+    position: absolute;
+    top: 0;
+    left: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    max-width: 380px;
+    z-index: 1;
+    transition: top 0.3s ease, padding 0.3s ease;
+}
+
+.conteudo .nome-planeta {
+    color: #fff;
+    font-size: 48px;
+    font-family: "Secular One";
+    font-weight: 400;
+    margin-bottom: 20px;
+    transition: font-size 0.3s ease;
+}
+
+.conteudo .descricao {
+    color: #fff;
+    font-family: "Rubik";
+    line-height: 24px;
+    transition: font-size 0.3s ease, max-width 0.3s ease;
+}
+
+.conteudo .logo {
+    background-image: url("../imagens/logotipo/logo-sistema-solar.png");
+    background-size: cover;
+    height: 110px;
+    width: 160px;
+    margin-bottom: 10px;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Menu lateral */
+.rodape-icones {
+    width: auto;
+    padding: 20px;
+    text-align: left;
+    background: transparent;
+    position: absolute;
+    bottom: 150px;
+    left: 100px;
+    z-index: 2;
+}
+
+.rodape-icones ul {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.rodape-icones .icone {
+    width: 30px;
+    height: 30px;
+    filter: invert(100%);
+    transition: transform 0.2s ease;
+}
+
+.rodape-icones .icone:hover {
+    transform: scale(1.1);
+}
+
+.botoes {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 120px;
+    gap: 15px;
+    background-color: rgba(0, 0, 14, 0.233);
+    z-index: 100;
+    transition: flex-direction 0.3s ease, width 0.3s ease, gap 0.3s ease;
+}
+
+.botoes .botao {
+    border: none;
+    background: #000;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.botoes .botao img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.botoes .botao.selecionado {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #D9D9D9;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    main::after {
+        background: linear-gradient(0deg, #000 20%, rgba(0, 0, 0, 0) 65%) no-repeat;
+        width: 100vw;
+    }
+
+    .conteudo {
+        justify-content: flex-start;
+        left: 60px;
+        max-width: 100vw;
+        padding: 20px;
+        top: 150px;
+    }
+
+    .conteudo .nome-planeta {
+        font-size: 36px;
+    }
+
+    .conteudo .descricao {
+        max-width: 500px;
+    }
+
+    .botoes {
+        flex-direction: row;
+        width: 100%;
+        margin-top: 90px;
+    }
+
+    .botoes .botao {
+        width: 50px;
+        height: 50px;
+    }
+
+    .rodape-icones {
+        bottom: 20px;
+        left: 350px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 720px) {
+    .main .planeta .imagem {
+        height: 85%;
+    }
+
+    .conteudo {
+        justify-content: flex-start;
+        left: 50px;
+        max-width: 100vw;
+        padding: 30px;
+        top: 150px;
+    }
+
+    .conteudo .nome-planeta {
+        font-size: 30px;
+    }
+
+    .conteudo .descricao {
+        max-width: 450px;
+    }
+
+    .botoes {
+        flex-direction: row;
+        width: 100%;
+        margin-top: 90px;
+    }
+
+    .botoes .botao {
+        width: 45px;
+        height: 45px;
+    }
+
+    .rodape-icones {
+        bottom: 20px;
+        left: 350px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 620px) {
+    .main .planeta .imagem {
+        height: auto;
+    }
+
+    .conteudo .logo {
+        width: 100px;
+        height: 60px;
+    }
+
+    .conteudo .nome-planeta {
+        font-size: 20px;
+    }
+
+    .botoes {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+        width: 100%;
+        margin-top: 90px;
+    }
+
+    .botoes .botao {
+        width: 35px;
+        height: 35px;
+        flex: 0 0 calc(50% - 10px);
+    }
+
+    .rodape-icones {
+        bottom: 20px;
+        left: 200px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 425px) {
+    .botoes .botao {
+        width: 25px;
+        height: 25px;
+    }
+
+    .rodape-icones {
+        bottom: 20px;
+        left: 128px;
+        padding: 10px;
+    }
+}
